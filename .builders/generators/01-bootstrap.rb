@@ -60,14 +60,16 @@ KManager.action :bootstrap do
         # run_command("git add .; git commit -m 'chore: #{self.options.description.downcase}'; git push")
       end
       .blueprint(
-        active: false,
+        active: true,
         name: :opinionated,
         description: 'opinionated files',
         on_exist: :write) do
 
         cd(:app)
 
-        # add('something.txt', dom: dom)
+        add('index.html', dom: dom)
+        add('main.css', dom: dom)
+        add('main.js', dom: dom)
 
         # run_command("git add .; git commit -m 'chore: #{self.options.description.downcase}'; git push")
       end
