@@ -27,7 +27,7 @@ KManager.action :bootstrap do
         # run_command('git init')
       end
       .blueprint(
-        active: true,
+        active: false,
         name: :bin_hook,
         description: 'initialize repository',
         on_exist: :write) do
@@ -67,14 +67,17 @@ KManager.action :bootstrap do
 
         cd(:app)
 
-        add('index.html', dom: dom)
-        add('main.css', dom: dom)
-        add('main.js', dom: dom)
+        add('README.md'   , dom: dom)
+
+        # add('index.html', dom: dom)
+        # add('main.css'  , dom: dom)
+        # add('main.js'   , dom: dom)
 
         # run_command("git add .; git commit -m 'chore: #{self.options.description.downcase}'; git push")
       end
 
     director.play_actions
+    director.debug
   end
 end
 
